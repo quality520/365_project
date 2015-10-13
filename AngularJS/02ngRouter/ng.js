@@ -1,0 +1,20 @@
+angular.module("myApp",["ngRoute"])
+
+.config(["$routeProvider",function($routeProvider){
+	$routeProvider
+		.when("/first",{
+			templateUrl:"list/01.html"
+		})
+		.when("/sencond",{
+			templateUrl:"list/02.html"
+		})
+		.when("/third",{
+			templateUrl:"list/03.html"
+		})
+		.when("/",{
+			templateUrl:"/ngRoute.html"/*tips:此处一定要用/ngRoute.html*/
+		})
+		.otherwise({
+			redirectTo:"/"
+		});
+}])
