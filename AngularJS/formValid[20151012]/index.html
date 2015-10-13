@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="myApp">
+<html ng-app="mainApp">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,13 +7,26 @@
 	<title>表单验证</title>
 	<link rel="stylesheet" href="main.css">
 </head>
-<body>
+<body ng-controller="mainCtrl">
 	<form name="loginForm" novalidate  ng-model-options="{updateOn:'blur'}">
 		<div class="userName">
-			<input type="text" name="username" na-model="data.username" required ng-pattern="^1\d{10}">
-			<div class="error" ng-show="loginForm.username.$valid && loginForm.username.$error.required">请输入用户名</div>
-			<div class="error" ng-show="loginForm.username.$valid"></div>
+			<input type="text" name="username" ng-model="data.username" required placeholder="用户名">
+			<div class="error" ng-show="(loginForm.username.$touched || loginForm.$submitted) && loginForm.username.$error.required">请输入用户名</div>
 		</div>
+        <div class="telPhone">
+            <input type="tel" name="phone" ng-model="data.phone" required pattern="^1\d{10}" placeholder="手机号"/>
+            <div class="error" ng-show="(loginForm.phone.$touched || loginForm.$submitted) && loginForm.phone.$error.required">请输入手机号</div>
+            <div class="error" ng-show="(loginForm.phone.$touched || loginForm.$submitted) && loginForm.phone.$error.pattern">请输入正确的手机号</div>
+        </div>
+        <div class="passWord">
+            <input type="password" name="pwd" ng-model="data.pwd" required minlength="6" maxlength="20" placeholder="密码"/>
+            <div class="error" ng-show="(loginForm.pwd.$touched || loginForm.$submitted) && loginForm.pwd.$error.required">请输入密码</div>
+            <div class="error" ng-show="(loginForm.pwd.$touched || loginForm.$submitted) && loginForm.pwd.$error.minlength">密码长度不能小于6</div>
+            <div class="error" ng-show="(loginForm.pwd.$touched || loginForm.$submitted) && loginForm.pwd.$error.maxlength">密码长度不能大于20</div>
+        </div>
+        <div class="submit">
+            <button>提&nbsp;&nbsp;交</button>
+        </div>
 	</form>
 
 

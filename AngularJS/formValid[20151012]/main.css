@@ -1,0 +1,46 @@
+html,body{
+    margin:0;
+    padding:0;
+}
+html{
+    font-size:62.5%;
+}
+body{
+    font-size:16px;
+    font-family:"Microsoft YaHei";
+    color:#000;
+}
+form{
+    width:100%;
+    padding:0 20px;
+    box-sizing:border-box;
+}
+form input{
+    width:100%;
+    height:32px;
+    box-sizing:border-box;
+    border-radius:5px;
+    border:1px solid #ccc;
+    padding-left:15px;
+}
+form div{
+    margin-top:10px;
+}
+form .error{
+    padding:0;
+    margin:0;
+    color:#f00;
+    font-size:1.4rem;
+    text-indent:15px;
+}
+form .submit{
+    margin-top:25px;
+}
+.submit button{
+    width:100%;
+    height:32px;
+    border:1px solid #cccccc;
+    border-radius:5px;
+    background:#cccccc;
+    color:#fff;
+}
