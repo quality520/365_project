@@ -24,23 +24,20 @@
   <script>
     angular.module('myApp',[])
       .controller('mainCtrl',['$scope','$timeout',function($scope,$timeout){
-        console.log($timeout)
         $scope.data = {}
+        $scope.data.code = '验证'
         $scope.seconds = 30;
-        $scope.data.code = $scope.seconds;
-        $scope.timeout = $timeout(function(){
+        var timeout = function(){
+          if($scope.seconds > 0){
             $scope.seconds--;
+            $scope.data.code = $scope.seconds;
             console.log($scope.seconds);
-            $scope.timeout;
-          },1000);
-        $scope.cBtn = function(){
-          $timeout(function(){
-            $scope.seconds--;
-            console.log($scope.seconds);
-            $scope.timeout;
-          },1000);
+            $timeout(timeout,1000);
+          }else{
+            $scope.data.code = '验证';
+          }
         }
-
+        $scope.cBtn = timeout;
       }])
   </script>
 </body>
