@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>$timeout</title>
+  <style>
+    input{
+      width:200px;
+      height:45px;
+      background:green;
+      border:1px solid green;
+      border-radius:5px;
+      font-size:18px;
+      color:#fff;
+    }
+  </style>
+</head>
+<body ng-controller="mainCtrl">
+  <input type="button" value="{{data.code}}" ng-click="cBtn()" />
+
+
+  <script src="../library/scripts/angular.js"></script>
+  <script>
+    angular.module('myApp',[])
+      .controller('mainCtrl',['$scope','$timeout',function($scope,$timeout){
+        console.log($timeout)
+        $scope.data = {}
+        $scope.seconds = 30;
+        $scope.data.code = $scope.seconds;
+        $scope.timeout = $timeout(function(){
+            $scope.seconds--;
+            console.log($scope.seconds);
+            $scope.timeout;
+          },1000);
+        $scope.cBtn = function(){
+          $timeout(function(){
+            $scope.seconds--;
+            console.log($scope.seconds);
+            $scope.timeout;
+          },1000);
+        }
+
+      }])
+  </script>
+</body>
+</html>
